@@ -1,0 +1,19 @@
+[project]
+name = "recount"
+version = "0.1.0"
+description = "Recompute numeric claims against official data, with every model call routed through the Otari gateway."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Abdul AmberNeel" }]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+recount = "recount.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["recount"]
