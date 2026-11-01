@@ -1,0 +1,61 @@
+{
+  "step": "step1_extract",
+  "kind": "chat",
+  "request": {
+    "model": "openai/gpt-oss-20b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Extract every number from this claim and the arithmetic it implies. Reply with JSON only:\n{\"entity\": str, \"indicator\": str, \"figures\": [{\"label\": str, \"value\": number, \"unit\": str, \"year\": int|null}], \"derived\": {\"label\": str, \"value\": number, \"unit\": str} | null, \"formula\": str}\n\nClaim: India's population grew from 1.32 billion in 2015 to 1.43 billion in 2023, an increase of more than 15 percent."
+      }
+    ],
+    "reasoning_effort": "low",
+    "max_tokens": 800,
+    "tags": {
+      "app": "recount",
+      "step": "extract"
+    }
+  },
+  "headers": {
+    "Otari-Model": "openai/gpt-oss-20b",
+    "Otari-Provider": "deepinfra",
+    "Otari-Fallback": "false",
+    "Otari-Attempt-Count": "1",
+    "Otari-Request-Id": "e3d0b14f-84a1-4974-9464-910bc0c2b849",
+    "Otari-Response-Duration-Ms": "2094"
+  },
+  "response": {
+    "id": "chatcmpl-RUopONyrEEX9LoCXCo4BNH9F",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"entity\":\"India\",\"indicator\":\"population\",\"figures\":[{\"label\":\"population\",\"value\":1.32e9,\"unit\":\"population\",\"year\":2015},{\"label\":\"population\",\"value\":1.43e9,\"unit\":\"population\",\"year\":2023}],\"derived\":{\"label\":\"percent increase\",\"value\":8.333333333333334,\"unit\":\"percent\"},\"formula\":\"(1.43e9-1.32e9)/1.32e9\"}",
+          "role": "assistant",
+          "tool_calls": [],
+          "reasoning": "We need parse numbers: 1.32 billion 2015, 1.43 billion 2023. increase >15% suggests derived maybe percent increase. Calculate? percent increase = (1.43-1.32)/1.32 = 0.11/1.32=0.08333=8.33%. But claim says more than 15% which is wrong. Derived maybe percent increase (though claim wrong). Provide derived maybe 8.3%. formula. Let's output JSON.",
+          "reasoning_content": "We need parse numbers: 1.32 billion 2015, 1.43 billion 2023. increase >15% suggests derived maybe percent increase. Calculate? percent increase = (1.43-1.32)/1.32 = 0.11/1.32=0.08333=8.33%. But claim says more than 15% which is wrong. Derived maybe percent increase (though claim wrong). Provide derived maybe 8.3%. formula. Let's output JSON.",
+          "provider_specific_fields": {
+            "reasoning_content": "We need parse numbers: 1.32 billion 2015, 1.43 billion 2023. increase >15% suggests derived maybe percent increase. Calculate? percent increase = (1.43-1.32)/1.32 = 0.11/1.32=0.08333=8.33%. But claim says more than 15% which is wrong. Derived maybe percent increase (though claim wrong). Provide derived maybe 8.3%. formula. Let's output JSON.",
+            "name": null
+          },
+          "refusal": null
+        },
+        "logprobs": null
+      }
+    ],
+    "created": 1793532041,
+    "model": "openai/gpt-oss-20b",
+    "object": "chat.completion",
+    "service_tier": "default",
+    "usage": {
+      "completion_tokens": 213,
+      "prompt_tokens": 167,
+      "total_tokens": 380,
+      "estimated_cost": 3.483e-05,
+      "cost_usd": "0.000035",
+      "pricing_source": "deployment"
+    }
+  }
+}
