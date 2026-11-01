@@ -1,0 +1,98 @@
+{
+  "step": "code_interpreter_sandbox",
+  "note": "Responses API code_interpreter: real sandbox run (CAGR 1000->1950, 2015-2023)",
+  "headers": {
+    "_status": "200",
+    "Otari-Attempt-Count": "1",
+    "Otari-Container-Expires-At": "2026-10-31T17:44:29.317135+00:00",
+    "Otari-Container-Id": "otari_cntr_b2b7d97faf464f9087bd20da581f59b4",
+    "Otari-Fallback": "false",
+    "Otari-Model": "openai/gpt-oss-120b",
+    "Otari-Provider": "deepinfra",
+    "Otari-Request-Id": "b2a665a8-3522-4524-bd3f-5dfae8789d77",
+    "Otari-Response-Duration-Ms": "26602"
+  },
+  "response": {
+    "id": "resp_f716143b4d1f415a9c2f2bef87ffc8c6",
+    "created_at": 1793468095.0,
+    "instructions": "You have access to the following tools:\n- code_execution: Prefer `code_execution` for any computation, data analysis, date arithmetic, statistics, or anything that benefits from exact output. Python with numpy/pandas/scipy/sympy/matplotlib pre-installed. Files the user attached are in the working directory under their own names. A file you write there comes back with a file_id; give the user that file_id so they can download it.\n\nUse the python tool for every calculation. Then answer briefly.",
+    "model": "openai/gpt-oss-120b",
+    "object": "response",
+    "output": [
+      {
+        "id": "otari_ci_3a8f44c77d9d48d3a08ad8a696c5444e",
+        "code": "begin=1000\nend=1950\nyears=2023-2015\ncagr=(end/begin)**(1/years)-1\ncagr_percent=cagr*100\ncagr, cagr_percent",
+        "container_id": "otari_cntr_b2b7d97faf464f9087bd20da581f59b4",
+        "outputs": [
+          {
+            "logs": "(0.08706202972134314, 8.706202972134314)\n",
+            "type": "logs"
+          }
+        ],
+        "status": "completed",
+        "type": "code_interpreter_call"
+      },
+      {
+        "id": "otari_rs_7113d3971abd462c9679dfc0a989252c",
+        "summary": [],
+        "type": "reasoning",
+        "content": [
+          {
+            "text": "We need also compute (1950/1000 -1) as percent. That's (1.95 -1)=0.95 => 95%. Provide both.",
+            "type": "reasoning_text"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "id": "msg_543ff6130da14980b231baa11ca96a75",
+        "content": [
+          {
+            "annotations": [],
+            "text": "- **CAGR (Compound Annual Growth Rate)** from 2015 to 2023: **≈ 8.71 % per year**  \n  (Calculated as \\((1950/1000)^{1/8} - 1\\) ≈ 0.08706 → 8.706 %)\n\n- **Simple total growth** over the period:  \n  \\(\\frac{1950}{1000} - 1 = 0.95\\) → **95 %** increase.",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "tool_choice": "auto",
+    "tools": [
+      {
+        "name": "code_execution",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "The Python code to execute."
+            }
+          },
+          "required": [
+            "code"
+          ]
+        },
+        "type": "function",
+        "description": "Execute Python code in a sandboxed REPL. Returns stdout, stderr, and any rich result blocks. State persists across calls within the same request."
+      }
+    ],
+    "status": "completed",
+    "usage": {
+      "input_tokens": 659,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 321,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 980,
+      "cost_usd": "0.010079",
+      "pricing_source": "deployment"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "step": "routing_policy_all_rejected",
+  "note": "recount-auditor: every candidate rejected the request (400 all_candidates_rejected)",
+  "headers": {
+    "_status": "400",
+    "Otari-Error-Code": "all_candidates_rejected",
+    "Otari-Request-Id": "906f66e9-9b1d-4b4d-96b9-b48c7e640a80"
+  },
+  "response": {
+    "detail": "No model accepted the request (3 attempts). Check the request parameters.",
+    "code": "all_candidates_rejected"
+  }
+}
